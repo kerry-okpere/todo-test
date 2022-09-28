@@ -11,6 +11,9 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  // notes
+  // due date
+  // Emoji
   const { id } = ctx.query
   const data = await api.getTodoById(id as string)
 
