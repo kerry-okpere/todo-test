@@ -1,19 +1,16 @@
-import { useTimeOfDay } from '@hooks/useTimeOfDay'
+import { useTodayDate } from '@hooks/useDate'
+import { StyleHeading, StyleSubHeading, StyledHeader } from './styles'
 
 export const Greeting = () => {
-  // TODO: make date reactive?
-
-  const today = new Date()
-  const period = useTimeOfDay()
-
-  const dayName = today.toLocaleString('default', { weekday: 'long' })
-  const month = today.toLocaleString('default', { month: 'short' })
-  const day = today.getDate()
+  // TODO: make date reactive per hour?
+  const { dayName, month, day, timeOfDay } = useTodayDate(new Date())
 
   return (
-    <header>
-      <h1>👋 Good {period}!</h1>
-      <p>It&apos;s {`${dayName}, ${month} ${day}`}</p>
-    </header>
+    <StyledHeader>
+      <StyleHeading>👋 Good {timeOfDay}!</StyleHeading>
+      <StyleSubHeading>
+        It&apos;s {`${dayName}, ${month} ${day}`}
+      </StyleSubHeading>
+    </StyledHeader>
   )
 }
