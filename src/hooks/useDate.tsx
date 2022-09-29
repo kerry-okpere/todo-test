@@ -6,6 +6,7 @@ export const useTodayDate = (date: Date = new Date()) => {
   const hours = today.getHours()
   const dayName = today.toLocaleString('default', { weekday: 'long' })
   const month = today.toLocaleString('default', { month: 'short' })
+  const year = today.getFullYear()
 
   if (hours < 12) timeOfDay = 'morning'
   if (hours >= 12 && hours <= 17) timeOfDay = 'afternoon'
@@ -16,5 +17,6 @@ export const useTodayDate = (date: Date = new Date()) => {
     month,
     day,
     timeOfDay,
+    year,
   }
 }
