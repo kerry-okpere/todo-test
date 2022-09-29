@@ -1,17 +1,31 @@
-interface Props {
-  value?: string
-  placeholder?: string
-  type?: string
-  disabled?: boolean
+import { Checkbox } from '@components/checkbox'
+import { StyledInputWrapper, StyledInputError } from './styles'
+interface Props extends React.HTMLProps<HTMLInputElement> {
+  type?: 'text' | 'tel' | 'email' | 'search'
+  withCheckbox?: boolean
+  defaultChecked?: boolean
+  error?: string
+  onChecked?: (e: React.ChangeEvent<HTMLInputElement>) => void
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onEnter?: () => void
 }
 
-export const Input = ({ type = 'text', onEnter, ...rest }: Props) => {
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key !== 'Enter') return
-    onEnter && onEnter()
-  }
-
-  return <input type={type} onKeyDown={handleKeyDown} {...rest} />
+export const Input = ({
+  type = 'text',
+  defaultChecked,
+  error,
+  withCheckbox,
+  onChecked,
+  ...rest
+}: Props) => {
+  return (
+    <div>
+      <StyledInputWrapper>
+        {withCheckbox ? (
+          <Checkbox defaultChecked={defaultChecked} onChange={onChecked} />
+        ) : null}
+        <input type={type} {...rest} />
+      </StyledInputWrapper>
+      <StyledInputError>{error}</StyledInputError>
+    </div>
+  )
 }
