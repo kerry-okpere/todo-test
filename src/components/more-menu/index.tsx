@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { ClickAway } from '@components/click-away'
 import { CgMoreVerticalAlt } from 'react-icons/cg'
 import { StyledButton, StyledMenuWrapper, StyleMenuList } from './styles'
