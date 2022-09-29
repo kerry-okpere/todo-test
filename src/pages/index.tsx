@@ -7,7 +7,7 @@ import type { Todo } from 'global'
 import api from '@services/todo'
 import { Loader } from '@components/loader'
 import { isValid } from '@lib/validate'
-import { StyledLoaderWrapper, StyledPageWrapper } from '@styles/todo-list-page'
+import { StyledLoaderWrapper, StyledPageWrapper } from '@styles/todo/list-page'
 
 const Home: NextPage = () => {
   const [newTodo, setNewTodo] = useState('')
