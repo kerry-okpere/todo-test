@@ -5,14 +5,15 @@ import { Input } from '@components/input'
 import { useEffect, useState } from 'react'
 import type { Todo } from 'global'
 import api from '@services/todo'
-
-// Show loading state
-// show empty state
+import { Loader } from '@components/loader'
+import { isValid } from './validate'
+import { StyledLoaderWrapper, StyledPageWrapper } from './styles'
 
 const Home: NextPage = () => {
-  const [newTask, setNewTask] = useState('')
+  const [newTodo, setNewTodo] = useState('')
   const [todos, setTodos] = useState<Todo[]>([])
   const [loading, setLoading] = useState(false)
+  const [validate, setValidate] = useState<{ title: string } | null>(null)
 
   useEffect(() => {
     ;(async () => {
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
 
     if (res) {
       setTodos((prevTodos: Todo[]) => [res, ...prevTodos])
-      setNewTask('')
+      setNewTodo('')
     }
   }
 
@@ -41,6 +42,8 @@ const Home: NextPage = () => {
         prevTodos.filter((todo) => todo.id !== id)
       )
     }
+
+    return res
   }
 
   const updateTodo = async (
@@ -61,46 +64,39 @@ const Home: NextPage = () => {
     }
   }
 
-  const isValid = (value: string) => value.length > 2
-
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    const target = e.target as typeof e.target & {
-      todo: { value: string }
-    }
 
-    if (!isValid(target.todo.value)) {
-      // TODO: add ui feedback
-      console.log('Todo should be more than 2 characters')
+    if (!isValid(newTodo)) {
+      setValidate(() => ({ title: 'Invalid character length' }))
       return
     }
 
-    addTodo(target.todo.value)
+    addTodo(newTodo)
   }
 
   return (
-    <section>
-      <Greeting />
+    <StyledPageWrapper>
+      <header>
+        <Greeting />
+      </header>
       <form onSubmit={handleSubmit}>
         <Input
-          value={newTask}
-          name="todo"
-          onChange={(e) => setNewTask(e.target.value)}
+          placeholder="Add a new todo"
+          value={newTodo}
+          name="title"
+          error={validate?.title}
+          onChange={(e) => setNewTodo(e.target.value)}
         />
       </form>
       {loading ? (
-        'loading...'
+        <StyledLoaderWrapper>
+          <Loader size={40} />
+        </StyledLoaderWrapper>
       ) : (
-        <TodoList
-          todos={todos}
-          updateTodo={updateTodo}
-          onDelete={deleteTodo}
-          onDuplicate={() => {
-            'hey'
-          }}
-        />
+        <TodoList todos={todos} updateTodo={updateTodo} onDelete={deleteTodo} />
       )}
-    </section>
+    </StyledPageWrapper>
   )
 }
 
