@@ -17,7 +17,7 @@ import {
   StyledSaveButton,
   StyledContainer,
   StyledDate,
-} from './styles'
+} from '@styles/todo-details-page'
 import { DatePicker } from '@components/date-picker'
 
 type PageProp = {
