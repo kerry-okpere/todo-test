@@ -87,7 +87,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
             <p>Due date</p>
             <DatePicker
               selected={new Date(newTodo.due)}
-              onDayClick={(day) =>
+              onDayClick={(day: Date) =>
                 setTodo((prev: Todo) => ({ ...prev, due: day.getTime() }))
               }
             />
