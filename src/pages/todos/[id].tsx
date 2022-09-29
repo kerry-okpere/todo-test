@@ -15,6 +15,8 @@ import {
   StyledLink,
   StyledDeleteButton,
   StyledSaveButton,
+  StyledContainer,
+  StyledDate,
 } from './styles'
 import { DatePicker } from '@components/date-picker'
 
@@ -25,7 +27,6 @@ type PageProp = {
 const TodoPage: NextPage<PageProp> = ({ todo }) => {
   const router = useRouter()
   const [validate, setValidate] = useState<{ title: string } | null>(null)
-  const [selected, setSelected] = useState<Date>(new Date())
 
   const [saveLoading, setSaveLoading] = useState(false)
   const updateTodo = async (payload: Todo) => {
@@ -55,46 +56,54 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
   return (
     <StyledPageWrapper>
       <form onSubmit={handleSubmit}>
-        <Link href="/" passHref>
-          <StyledLink>
-            <CgArrowLongLeft size={20} />
-            Back
-          </StyledLink>
-        </Link>
+        <StyledContainer>
+          <Link href="/" passHref>
+            <StyledLink>
+              <CgArrowLongLeft size={20} />
+              Back
+            </StyledLink>
+          </Link>
 
-        <header>
-          <Input
-            name="title"
-            withCheckbox
-            value={newTodo.title}
-            defaultChecked={todo.isComplete}
-            error={validate?.title}
-            onChecked={(e) =>
-              setTodo((prev: Todo) => ({
-                ...prev,
-                isComplete: e.target.checked,
-              }))
-            }
+          <header>
+            <Input
+              name="title"
+              withCheckbox
+              value={newTodo.title}
+              defaultChecked={todo.isComplete}
+              error={validate?.title}
+              onChecked={(e) =>
+                setTodo((prev: Todo) => ({
+                  ...prev,
+                  isComplete: e.target.checked,
+                }))
+              }
+              onChange={(e) =>
+                setTodo((prev: Todo) => ({ ...prev, title: e.target.value }))
+              }
+            />
+          </header>
+
+          <StyledDate>
+            <p>Due date</p>
+            <DatePicker
+              selected={new Date(newTodo.due)}
+              onDayClick={(day) =>
+                setTodo((prev: Todo) => ({ ...prev, due: day.getTime() }))
+              }
+            />
+          </StyledDate>
+
+          <Textarea
+            name="note"
+            placeholder="Write a note..."
+            rows={6}
+            value={newTodo.note}
             onChange={(e) =>
-              setTodo((prev: Todo) => ({ ...prev, title: e.target.value }))
+              setTodo((prev: Todo) => ({ ...prev, note: e.target.value }))
             }
           />
-        </header>
-        <DatePicker
-          selected={new Date(newTodo.due)}
-          onDayClick={(day) =>
-            setTodo((prev: Todo) => ({ ...prev, due: day.getTime() }))
-          }
-        />
-        <Textarea
-          name="note"
-          placeholder="Write a note..."
-          rows={6}
-          value={newTodo.note}
-          onChange={(e) =>
-            setTodo((prev: Todo) => ({ ...prev, note: e.target.value }))
-          }
-        />
+        </StyledContainer>
+
         <StyledActionWrapper>
           <StyledDeleteButton
             type="button"

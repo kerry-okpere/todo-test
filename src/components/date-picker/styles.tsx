@@ -8,6 +8,7 @@ export const StyledDayPicker = styled(DayPicker)`
   }
 `
 export const StyleDropDown = styled.div`
+  font-size: 12px;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   display: inline-flex;
   align-items: center;
@@ -16,10 +17,11 @@ export const StyleDropDown = styled.div`
   border-radius: 8px;
   gap: 0.5rem;
   cursor: pointer;
+  background-color: ${(props) => props.theme.palette.gray['001']};
 `
 export const StyledDayPickerContent = styled.div<{ isOpen: boolean }>`
   position: absolute;
-  top: 40px;
+  top: 38px;
   left: auto;
   right: 0;
   z-index: 10;

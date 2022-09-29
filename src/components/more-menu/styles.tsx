@@ -17,8 +17,7 @@ export const StyledMenuWrapper = styled.div`
 
 export const StyleMenuList = styled.ul<{ isOpen: boolean }>`
   height: ${(props) => (props.isOpen ? 'auto' : 0)};
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-shadow: 0 0px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   position: absolute;
   background-color: ${(props) => props.theme.palette.gray['001']};
   width: 170px;
@@ -26,6 +25,7 @@ export const StyleMenuList = styled.ul<{ isOpen: boolean }>`
   z-index: 10;
   overflow: hidden;
   transition: all 0.3s;
+  top: 30px;
   left: auto;
   right: 0;
 `

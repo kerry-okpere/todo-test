@@ -13,11 +13,34 @@ export const StyledPageWrapper = styled.div`
     background-color: ${(props) => props.theme.palette.gray['001']};
     padding: 2rem 1.5rem;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     @media ${devices.mobile} {
       padding: 2rem;
       height: 95%;
     }
+  }
+`
+
+export const StyledContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+export const StyledDate = styled.div`
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: ${(props) => props.theme.borderRadius.lg};
+  background-color: ${(props) => props.theme.palette.gray['003']};
+
+  p {
+    color: ${(props) => props.theme.palette.gray['007']};
+    font-weight: 500;
   }
 `
 

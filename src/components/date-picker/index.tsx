@@ -29,7 +29,7 @@ export const DatePicker = ({ selected = new Date(), onDayClick }: Props) => {
   return (
     <ClickAway onClickAway={() => setIsOpen(false)}>
       <StyledDayPickerWrapper>
-        <StyleDropDown onClick={() => setIsOpen(true)}>
+        <StyleDropDown onClick={() => setIsOpen((prev) => !prev)}>
           <span>{`${month} ${day} ${year}`}</span>
           <CgChevronDown size={17} />
         </StyleDropDown>
