@@ -1,8 +1,8 @@
-import { StyledLoader, StyledWrapper } from './styles'
-export const Loader = () => {
-  return (
-    <StyledWrapper>
-      <StyledLoader size={40}></StyledLoader>
-    </StyledWrapper>
-  )
+import { StyledLoader } from './styles'
+
+interface Props {
+  size?: number
+}
+export const Loader = ({ size }: Props) => {
+  return <StyledLoader size={size}></StyledLoader>
 }

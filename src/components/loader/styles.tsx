@@ -10,12 +10,3 @@ export const StyledLoader = styled(CgSpinner)`
     }
   }
 `
-
-export const StyledWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  min-height: 200px;
-`
