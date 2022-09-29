@@ -14,7 +14,7 @@ export const MoreMenu = ({ children }: Props) => {
 
   return (
     <ClickAway onClickAway={() => setIsOpen(false)}>
-      <StyledMenuWrapper onClick={() => setIsOpen((prev) => !prev)}>
+      <StyledMenuWrapper onClick={() => setIsOpen(true)}>
         <StyledButton>
           <CgMoreVerticalAlt size={17} />
         </StyledButton>

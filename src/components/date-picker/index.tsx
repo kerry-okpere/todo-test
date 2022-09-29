@@ -17,12 +17,10 @@ interface Props {
 
 export const DatePicker = ({ selected = new Date(), onDayClick }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
-  // const [selected, setSelected] = useState<Date>(new Date())
   const { month, day, year } = useTodayDate(selected)
 
   const handleSelect = (day: Date) => {
     setIsOpen(false)
-    // return setSelected(day)
     return onDayClick && onDayClick(day)
   }
 
