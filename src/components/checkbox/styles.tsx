@@ -1,9 +1,5 @@
+/*eslint indent: ["error", 2, { "ignoredNodes": ["ConditionalExpression"] }]*/
 import styled from 'styled-components'
-
-type Props = {
-  className?: string
-  [key: string]: any //fix: type issue
-}
 
 export const HiddenCheckbox = styled.input`
   height: 1px;
@@ -23,13 +19,19 @@ export const StyledCheckbox = styled.div<{ checked?: boolean }>`
   align-items: center;
   justify-content: center;
   padding: 0.15rem;
-  background: ${(props) => (props.checked ? '#222' : '#eeeff2')};
-  border-radius: 4px;
+  background-color: ${(props) =>
+    props.checked
+      ? props.theme.palette.gray['008']
+      : props.theme.palette.gray['004']};
+  border-radius: ${(props) => props.theme.borderRadius.sm};
   transition: all 0.3s;
   cursor: pointer;
 
   :hover {
-    background-color: ${(props) => (props.checked ? '#222' : '#e4e5e9')};
+    background-color: ${(props) =>
+      props.checked
+        ? props.theme.palette.gray['008']
+        : props.theme.palette.gray['005']};
   }
 
   svg {
@@ -37,11 +39,11 @@ export const StyledCheckbox = styled.div<{ checked?: boolean }>`
   }
 
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 3px #c1c1c1;
+    box-shadow: 0 0 0 3px ${(props) => props.theme.palette.gray['006']};
   }
 `
 
-export const StyledWrapper = styled.label<Props>`
+export const StyledWrapper = styled.label`
   display: inline-block;
   vertical-align: middle;
 `
