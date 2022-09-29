@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import type { Todo } from 'global'
 import api from '@services/todo'
 import { Loader } from '@components/loader'
-import { isValid } from './validate'
+import { isValid } from '@lib/validate'
 import { StyledLoaderWrapper, StyledPageWrapper } from './styles'
 
 const Home: NextPage = () => {
