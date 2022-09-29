@@ -2,12 +2,13 @@ import type { Todo } from 'global'
 import { useRouter } from 'next/router'
 import { Tag } from '@components/tag'
 import { Checkbox } from '@components/checkbox'
-import { StyledTodoItem, StyledTitle } from './styles'
+import { StyledTodoItem, StyledRow, StyledTodoItemTitle } from './styles'
 import { useState } from 'react'
-import { MoreMenu, MoreMenuItem } from '@components/more-menu'
+import { MoreMenuItem, MoreMenu } from '@components/more-menu'
 import { CgTrashEmpty } from 'react-icons/cg'
 import { HiPencil } from 'react-icons/hi'
 import { Loader } from '@components/loader'
+import { useTodayDate } from '@hooks/useDate'
 interface Props extends Todo {
   onChecked: (e: React.ChangeEvent<HTMLInputElement>) => void
   onDelete: (id: string) => void
@@ -16,12 +17,15 @@ interface Props extends Todo {
 export const TodoItem = ({
   id,
   title,
+  due,
   isComplete,
   onChecked,
   onDelete,
 }: Props) => {
-  // Todo: fix overflow issue with long text
+  // fix remove menu after deleting todo item
+
   const router = useRouter()
+  const { month, day } = useTodayDate(new Date(due))
 
   // handles unControlled side effect
   const [complete, setComplete] = useState(isComplete)
@@ -45,21 +49,24 @@ export const TodoItem = ({
 
   return (
     <StyledTodoItem isComplete={complete}>
-      <Checkbox defaultChecked={isComplete} onChange={handleChange} />
-      <StyledTitle>
-        <p>{title}</p>
-      </StyledTitle>
-      <Tag text={'18 Dec '} />
-      <MoreMenu>
-        <MoreMenuItem onClick={() => handleEdit()}>
-          {editLoading ? <Loader size={17} /> : <HiPencil size={17} />}
-          <span>Edit</span>
-        </MoreMenuItem>
-        <MoreMenuItem onClick={() => handleDelete()}>
-          {delLoading ? <Loader size={17} /> : <CgTrashEmpty size={17} />}
-          <span>Delete</span>
-        </MoreMenuItem>
-      </MoreMenu>
+      <StyledRow>
+        <Checkbox defaultChecked={isComplete} onChange={handleChange} />
+        <StyledTodoItemTitle>{title}</StyledTodoItemTitle>
+      </StyledRow>
+
+      <StyledRow>
+        {due ? <Tag text={`${day} ${month}`} /> : null}
+        <MoreMenu>
+          <MoreMenuItem onClick={() => handleEdit()}>
+            {editLoading ? <Loader size={17} /> : <HiPencil size={17} />}
+            <span>Edit</span>
+          </MoreMenuItem>
+          <MoreMenuItem onClick={() => handleDelete()}>
+            {delLoading ? <Loader size={17} /> : <CgTrashEmpty size={17} />}
+            <span>Delete</span>
+          </MoreMenuItem>
+        </MoreMenu>
+      </StyledRow>
     </StyledTodoItem>
   )
 }
