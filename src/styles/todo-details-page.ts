@@ -10,7 +10,7 @@ export const StyledPageWrapper = styled.div`
 
   form {
     border-radius: ${(props) => props.theme.borderRadius.md};
-    background-color: ${(props) => props.theme.palette.gray['001']};
+    background-color: ${(props) => props.theme.palette.gray.g1};
     padding: 2rem 1.5rem;
     height: 100%;
     display: flex;
@@ -36,10 +36,10 @@ export const StyledDate = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: ${(props) => props.theme.borderRadius.lg};
-  background-color: ${(props) => props.theme.palette.gray['003']};
+  background-color: ${(props) => props.theme.palette.gray.g3};
 
   p {
-    color: ${(props) => props.theme.palette.gray['007']};
+    color: ${(props) => props.theme.palette.gray.g7};
     font-weight: 500;
   }
 `

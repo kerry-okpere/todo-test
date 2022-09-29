@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const StyledInputWrapper = styled.div`
-  background-color: ${(props) => props.theme.palette.gray['002']};
+  background-color: ${(props) => props.theme.palette.gray.g2};
   border-radius: ${(props) => props.theme.borderRadius.lg};
   display: flex;
   align-items: center;
@@ -15,9 +15,9 @@ export const StyledInputWrapper = styled.div`
   }
 
   :focus-within {
-    outline: 1.5px solid ${(props) => props.theme.palette.gray['008']};
+    outline: 1.5px solid ${(props) => props.theme.palette.gray.g8};
   }
 `
 export const StyledInputError = styled.small`
-  color: ${(props) => props.theme.palette.error['001']};
+  color: ${(props) => props.theme.palette.error.e1};
 `

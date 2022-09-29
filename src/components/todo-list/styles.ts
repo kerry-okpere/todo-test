@@ -28,7 +28,7 @@ export const StyledTodoItem = styled.div<Partial<Todo>>`
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  background-color: ${(props) => props.theme.palette.gray['001']};
+  background-color: ${(props) => props.theme.palette.gray.g1};
   padding: 0.5em 0.75rem;
   border-radius: ${(props) => props.theme.borderRadius.lg};
 `

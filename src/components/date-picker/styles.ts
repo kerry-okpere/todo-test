@@ -17,7 +17,7 @@ export const StyleDropDown = styled.div`
   border-radius: 8px;
   gap: 0.5rem;
   cursor: pointer;
-  background-color: ${(props) => props.theme.palette.gray['001']};
+  background-color: ${(props) => props.theme.palette.gray.g1};
 `
 export const StyledDayPickerContent = styled.div<{ isOpen: boolean }>`
   position: absolute;
@@ -30,7 +30,7 @@ export const StyledDayPickerContent = styled.div<{ isOpen: boolean }>`
   height: ${(props) => (props.isOpen ? 'auto' : 0)};
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
     0 8px 10px -6px rgb(0 0 0 / 0.1);
-  background-color: ${(props) => props.theme.palette.gray['001']};
+  background-color: ${(props) => props.theme.palette.gray.g1};
   transition: all 0.3s;
 `
 

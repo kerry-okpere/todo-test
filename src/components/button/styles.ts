@@ -11,10 +11,10 @@ export const StyledButton = styled.button<Props>`
   gap: 0.25rem;
   color: ${(props) =>
     props.appearance === 'primary'
-      ? props.theme.palette.gray['001']
-      : props.theme.palette.error['002']};
+      ? props.theme.palette.gray.g1
+      : props.theme.palette.error.e2};
   background-color: ${(props) =>
     props.appearance === 'primary'
-      ? props.theme.palette.gray['008']
-      : props.theme.palette.error['001']};
+      ? props.theme.palette.gray.g8
+      : props.theme.palette.error.e1};
 `

@@ -20,9 +20,7 @@ export const StyledCheckbox = styled.div<{ checked?: boolean }>`
   justify-content: center;
   padding: 0.15rem;
   background-color: ${(props) =>
-    props.checked
-      ? props.theme.palette.gray['008']
-      : props.theme.palette.gray['004']};
+    props.checked ? props.theme.palette.gray.g8 : props.theme.palette.gray.g4};
   border-radius: ${(props) => props.theme.borderRadius.sm};
   transition: all 0.3s;
   cursor: pointer;
@@ -30,8 +28,8 @@ export const StyledCheckbox = styled.div<{ checked?: boolean }>`
   :hover {
     background-color: ${(props) =>
       props.checked
-        ? props.theme.palette.gray['008']
-        : props.theme.palette.gray['005']};
+        ? props.theme.palette.gray.g8
+        : props.theme.palette.gray.g5};
   }
 
   svg {
@@ -39,7 +37,7 @@ export const StyledCheckbox = styled.div<{ checked?: boolean }>`
   }
 
   ${HiddenCheckbox}:focus + & {
-    box-shadow: 0 0 0 3px ${(props) => props.theme.palette.gray['006']};
+    box-shadow: 0 0 0 3px ${(props) => props.theme.palette.gray.g6};
   }
 `
 

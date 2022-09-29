@@ -4,10 +4,10 @@ export const StyledButton = styled.button`
   border-radius: ${(props) => props.theme.borderRadius.md};
   padding: 0.3rem;
   transition: all 0.3s;
-  background-color: ${(props) => props.theme.palette.gray['003']};
+  background-color: ${(props) => props.theme.palette.gray.g3};
 
   :hover {
-    background-color: ${(props) => props.theme.palette.gray['005']};
+    background-color: ${(props) => props.theme.palette.gray.g5};
   }
 `
 
@@ -19,7 +19,7 @@ export const StyleMenuList = styled.ul<{ isOpen: boolean }>`
   height: ${(props) => (props.isOpen ? 'auto' : 0)};
   box-shadow: 0 0px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   position: absolute;
-  background-color: ${(props) => props.theme.palette.gray['001']};
+  background-color: ${(props) => props.theme.palette.gray.g1};
   width: 170px;
   border-radius: ${(props) => props.theme.borderRadius.md};
   z-index: 10;
@@ -39,9 +39,9 @@ export const StyledMenuItem = styled.div`
   cursor: pointer;
   transition: all 0.3s;
   text-transform: capitalize;
-  color: ${(props) => props.theme.palette.gray['008']};
+  color: ${(props) => props.theme.palette.gray.g8};
 
   :hover {
-    background-color: ${(props) => props.theme.palette.gray['005']};
+    background-color: ${(props) => props.theme.palette.gray.g5};
   }
 `

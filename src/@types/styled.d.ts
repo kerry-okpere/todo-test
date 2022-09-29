@@ -11,22 +11,22 @@ declare module 'styled-components' {
     }
     palette: {
       gray: {
-        '001': string
-        '002': string
-        '003': string
-        '004': string
-        '005': string
-        '006': string
-        '007': string
-        '008': string
+        g1: string
+        g2: string
+        g3: string
+        g4: string
+        g5: string
+        g6: string
+        g7: string
+        g8: string
       }
       accent: {
-        '001': string
-        '002': string
+        a1: string
+        a2: string
       }
       error: {
-        '001': string
-        '002': string
+        e1: string
+        e2: string
       }
     }
     screen: {
