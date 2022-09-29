@@ -1,5 +1,6 @@
 import { Theme } from 'styled-components'
 export const theme: Theme = {
+  iconSize: 17,
   borderRadius: {
     sm: '4px',
     md: '6px',

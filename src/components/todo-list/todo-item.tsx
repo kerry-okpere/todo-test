@@ -9,6 +9,7 @@ import { CgTrashEmpty } from 'react-icons/cg'
 import { HiPencil } from 'react-icons/hi'
 import { Loader } from '@components/loader'
 import { useTodayDate } from '@hooks/useDate'
+import { useTheme, Theme } from 'styled-components'
 interface Props extends Todo {
   onChecked: (e: React.ChangeEvent<HTMLInputElement>) => void
   onDelete: (id: string) => void
@@ -22,8 +23,7 @@ export const TodoItem = ({
   onChecked,
   onDelete,
 }: Props) => {
-  // fix remove menu after deleting todo item
-
+  const theme = useTheme() as Theme
   const router = useRouter()
   const { month, day } = useTodayDate(new Date(due))
 
@@ -58,11 +58,19 @@ export const TodoItem = ({
         {due ? <Tag text={`${day} ${month}`} /> : null}
         <MoreMenu>
           <MoreMenuItem onClick={() => handleEdit()}>
-            {editLoading ? <Loader size={17} /> : <HiPencil size={17} />}
+            {editLoading ? (
+              <Loader size={theme.iconSize} />
+            ) : (
+              <HiPencil size={theme.iconSize} />
+            )}
             <span>Edit</span>
           </MoreMenuItem>
           <MoreMenuItem onClick={() => handleDelete()}>
-            {delLoading ? <Loader size={17} /> : <CgTrashEmpty size={17} />}
+            {delLoading ? (
+              <Loader size={theme.iconSize} />
+            ) : (
+              <CgTrashEmpty size={theme.iconSize} />
+            )}
             <span>Delete</span>
           </MoreMenuItem>
         </MoreMenu>

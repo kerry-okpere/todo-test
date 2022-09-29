@@ -19,12 +19,14 @@ import {
   StyledDate,
 } from '@styles/todo-details-page'
 import { DatePicker } from '@components/date-picker'
+import { useTheme, Theme } from 'styled-components'
 
 type PageProp = {
   todo: Todo
 }
 
 const TodoPage: NextPage<PageProp> = ({ todo }) => {
+  const theme = useTheme() as Theme
   const router = useRouter()
   const [validate, setValidate] = useState<{ title: string } | null>(null)
 
@@ -59,7 +61,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
         <StyledContainer>
           <Link href="/" passHref>
             <StyledLink>
-              <CgArrowLongLeft size={20} />
+              <CgArrowLongLeft size={theme.iconSize} />
               Back
             </StyledLink>
           </Link>
@@ -111,14 +113,18 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
             onClick={deleteTodo}
             disabled={deleteLoading}
           >
-            {deleteLoading ? <Loader size={17} /> : <CgTrashEmpty size={17} />}
+            {deleteLoading ? (
+              <Loader size={theme.iconSize} />
+            ) : (
+              <CgTrashEmpty size={theme.iconSize} />
+            )}
             <span>Delete</span>
           </StyledDeleteButton>
           <StyledSaveButton
             type="submit"
             disabled={saveLoading || deleteLoading}
           >
-            {saveLoading ? <Loader size={17} /> : null}
+            {saveLoading ? <Loader size={theme.iconSize} /> : null}
             Save
           </StyledSaveButton>
         </StyledActionWrapper>

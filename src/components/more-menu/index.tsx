@@ -4,19 +4,20 @@ import { CgMoreVerticalAlt } from 'react-icons/cg'
 import { StyledButton, StyledMenuWrapper, StyleMenuList } from './styles'
 import flattenChildren from 'react-keyed-flatten-children'
 export { MoreMenuItem } from './more-menu-item'
-
+import { useTheme, Theme } from 'styled-components'
 interface Props {
   children: React.ReactNode
 }
 
 export const MoreMenu = ({ children }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
+  const theme = useTheme() as Theme
 
   return (
     <ClickAway onClickAway={() => setIsOpen(false)}>
       <StyledMenuWrapper onClick={() => setIsOpen(true)}>
         <StyledButton>
-          <CgMoreVerticalAlt size={17} />
+          <CgMoreVerticalAlt size={theme.iconSize} />
         </StyledButton>
         <StyleMenuList isOpen={isOpen}>
           {flattenChildren(children).map((child, index) => {

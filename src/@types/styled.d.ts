@@ -9,6 +9,7 @@ declare module 'styled-components' {
       xl: string
       '2xl': string
     }
+    iconSize: number
     palette: {
       gray: {
         g1: string
