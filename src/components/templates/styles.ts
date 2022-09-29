@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { devices } from '@styles/global'
 
 export const StyeldLayout = styled.main`
-  /* background-image: ; */ // Todo add bg image
-  background-color: azure;
+  background-color: azure; // use color as fall back if image is not found
+
   backdrop-filter: blur(40px);
   overflow: hidden;
   height: 100vh;
