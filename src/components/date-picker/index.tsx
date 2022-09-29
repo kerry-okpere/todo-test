@@ -12,7 +12,8 @@ import { ClickAway } from '@components/click-away'
 
 interface Props {
   selected?: Date
-  onDayClick?: (day: Date) => any
+
+  onDayClick?: (day: Date) => void
 }
 
 export const DatePicker = ({ selected = new Date(), onDayClick }: Props) => {
