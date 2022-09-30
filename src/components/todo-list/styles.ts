@@ -29,14 +29,15 @@ export const StyledTodoItem = styled.div<Partial<Todo>>`
   justify-content: space-between;
   gap: 0.5rem;
   background-color: ${(props) => props.theme.palette.gray.g1};
-  padding: 0.5em 0.75rem;
+  padding: 0.5rem 0.75rem;
   border-radius: ${(props) => props.theme.borderRadius.lg};
+  //hover effect
 `
 export const StyledTodoList = styled.ul`
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   overflow-y: scroll;
   overflow-x: hidden;
 `

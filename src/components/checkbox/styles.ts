@@ -18,7 +18,7 @@ export const StyledCheckbox = styled.div<{ checked?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.15rem;
+  padding: 0.25rem;
   background-color: ${(props) =>
     props.checked ? props.theme.palette.gray.g8 : props.theme.palette.gray.g4};
   border-radius: ${(props) => props.theme.borderRadius.sm};

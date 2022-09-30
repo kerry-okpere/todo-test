@@ -31,7 +31,7 @@ export const StyledContainer = styled.div`
 `
 
 export const StyledDate = styled.div`
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,4 +64,5 @@ export const StyledLink = styled.a`
   gap: 0.5rem;
   transition: all 0.3s;
   padding: 0.5rem 0;
+  font-size: 16px;
 `

@@ -1,8 +1,15 @@
 import styled from 'styled-components'
 
+interface ListPortalProps {
+  isOpen?: boolean
+  left?: number
+  top?: number
+  width?: number
+}
+
 export const StyledButton = styled.button`
   border-radius: ${(props) => props.theme.borderRadius.md};
-  padding: 0.3rem;
+  padding: 0.5rem;
   transition: all 0.3s;
   background-color: ${(props) => props.theme.palette.gray.g3};
 
@@ -15,23 +22,24 @@ export const StyledMenuWrapper = styled.div`
   position: relative;
 `
 
-export const StyleMenuList = styled.ul<{ isOpen: boolean }>`
+export const StyleMenuList = styled.ul<ListPortalProps>`
   height: ${(props) => (props.isOpen ? 'auto' : 0)};
   box-shadow: 0 0px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   position: absolute;
   background-color: ${(props) => props.theme.palette.gray.g1};
-  width: 170px;
   border-radius: ${(props) => props.theme.borderRadius.md};
+  max-height: 100px;
+  overflow: scroll;
   z-index: 10;
   overflow: hidden;
   transition: all 0.3s;
-  top: 30px;
-  left: auto;
-  right: 0;
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+  width: ${(props) => props.width}px;
 `
 
 export const StyledMenuItem = styled.div`
-  padding: 0.5rem;
+  padding: 0.75rem;
   width: 100%;
   height: 100%;
   display: inline-flex;

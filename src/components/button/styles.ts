@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Props } from './index'
 
 export const StyledButton = styled.button<Props>`
-  padding: 0.75rem 1rem;
+  padding: 1rem;
   border-radius: ${(props) => props.theme.borderRadius.md};
   font-weight: 600;
   display: inline-flex;

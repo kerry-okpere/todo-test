@@ -1,17 +1,19 @@
 import styled from 'styled-components'
+import { Props } from './index'
 
-export const StyledInputWrapper = styled.div`
+export const StyledInputWrapper = styled.div<Props>`
+  position: relative;
   background-color: ${(props) => props.theme.palette.gray.g2};
   border-radius: ${(props) => props.theme.borderRadius.lg};
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0 0 0 0.75rem;
+  padding: 0 0 0 1rem;
 
   input {
     align-self: stretch;
     width: 100%;
-    padding: 0.75rem 0;
+    padding: 1rem 0 1rem 0;
   }
 
   :focus-within {
@@ -19,5 +21,9 @@ export const StyledInputWrapper = styled.div`
   }
 `
 export const StyledInputError = styled.small`
-  color: ${(props) => props.theme.palette.error.e1};
+  color: ${(props) => props.theme.palette.error.e2};
+`
+export const StyledLoader = styled.div`
+  right: 1rem;
+  position: absolute;
 `

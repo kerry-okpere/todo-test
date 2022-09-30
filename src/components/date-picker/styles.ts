@@ -21,7 +21,7 @@ export const StyleDropDown = styled.div`
 `
 export const StyledDayPickerContent = styled.div<{ isOpen: boolean }>`
   position: absolute;
-  top: 38px;
+  top: 40px;
   left: auto;
   right: 0;
   z-index: 10;
