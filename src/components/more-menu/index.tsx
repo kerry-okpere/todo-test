@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { CgMoreVerticalAlt } from 'react-icons/cg'
-import { StyledButton, StyledMenuWrapper, StyleMenuList } from './styles'
+import { StyledButton, StyleMenuList, StyledButtonWapper } from './styles'
 import flattenChildren from 'react-keyed-flatten-children'
 export { MoreMenuItem } from './more-menu-item'
 import { useTheme, Theme } from 'styled-components'
@@ -16,6 +16,7 @@ export const MoreMenu = ({ children }: Props) => {
   const [isOpen, setOpen] = useState(false)
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    const extraSpace = 4
     const rect = (event.target as HTMLElement).getBoundingClientRect()
     const { offsetWidth, offsetHeight } = event.currentTarget
     const portalElWidth = 170
@@ -23,7 +24,7 @@ export const MoreMenu = ({ children }: Props) => {
 
     setCoords({
       left: rect.x - right,
-      top: rect.y + offsetHeight,
+      top: rect.y + offsetHeight + extraSpace,
       width: portalElWidth,
     })
 
@@ -35,15 +36,14 @@ export const MoreMenu = ({ children }: Props) => {
       onClickOutside={() => setOpen(false)}
       onFocusOutside={() => setOpen(false)}
     >
-      <StyledMenuWrapper>
+      <StyledButtonWapper>
         <StyledButton
           onClick={(e) => {
             handleOpen(e)
           }}
-        >
-          <CgMoreVerticalAlt size={theme.iconSize} />
-        </StyledButton>
-      </StyledMenuWrapper>
+        />
+        <CgMoreVerticalAlt size={theme.iconSize} />
+      </StyledButtonWapper>
 
       <Portal isOpen={isOpen}>
         <StyleMenuList {...coords} isOpen={isOpen}>

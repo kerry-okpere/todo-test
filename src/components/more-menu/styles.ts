@@ -7,19 +7,26 @@ interface ListPortalProps {
   width?: number
 }
 
-export const StyledButton = styled.button`
+export const StyledButtonWapper = styled.button`
+  position: relative;
   border-radius: ${(props) => props.theme.borderRadius.md};
   padding: 0.5rem;
   transition: all 0.3s;
   background-color: ${(props) => props.theme.palette.gray.g3};
+  overflow: hidden;
 
   :hover {
     background-color: ${(props) => props.theme.palette.gray.g5};
   }
 `
 
-export const StyledMenuWrapper = styled.div`
-  position: relative;
+export const StyledButton = styled.span`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: transparent;
 `
 
 export const StyleMenuList = styled.ul<ListPortalProps>`
