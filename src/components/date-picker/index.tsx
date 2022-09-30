@@ -15,7 +15,7 @@ interface Props {
   onDayClick?: (day: Date) => void
 }
 
-export const DatePicker = ({ selected = new Date(), onDayClick }: Props) => {
+export const DatePicker = ({ selected, onDayClick }: Props) => {
   const theme = useTheme() as Theme
   const [isOpen, setIsOpen] = useState(false)
   const { month, day, year } = useTodayDate(selected)
@@ -29,7 +29,11 @@ export const DatePicker = ({ selected = new Date(), onDayClick }: Props) => {
     <ClickAway onClickAway={() => setIsOpen(false)}>
       <StyledDayPickerWrapper>
         <StyleDropDown onClick={() => setIsOpen((prev) => !prev)}>
-          <span>{`${month} ${day} ${year}`}</span>
+          {selected ? (
+            <span>{`${month} ${day} ${year}`}</span>
+          ) : (
+            <span>Select Date</span>
+          )}
           <CgChevronDown size={theme.iconSize} />
         </StyleDropDown>
         <StyledDayPickerContent isOpen={isOpen}>
