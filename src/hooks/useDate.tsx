@@ -9,8 +9,8 @@ export const useTodayDate = (date: Date = new Date()) => {
   const year = today.getFullYear()
 
   if (hours < 12) timeOfDay = 'morning'
-  if (hours >= 12 && hours <= 17) timeOfDay = 'afternoon'
-  timeOfDay = 'evening'
+  else if (hours >= 12 && hours <= 17) timeOfDay = 'afternoon'
+  else timeOfDay = 'evening'
 
   return {
     dayName,
