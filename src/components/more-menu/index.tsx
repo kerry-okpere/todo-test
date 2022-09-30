@@ -1,30 +1,57 @@
 import { useState } from 'react'
-import { ClickAway } from '@components/click-away'
 import { CgMoreVerticalAlt } from 'react-icons/cg'
 import { StyledButton, StyledMenuWrapper, StyleMenuList } from './styles'
 import flattenChildren from 'react-keyed-flatten-children'
 export { MoreMenuItem } from './more-menu-item'
 import { useTheme, Theme } from 'styled-components'
+import { Portal } from '@components/portal'
+import Foco from 'react-foco'
 interface Props {
   children: React.ReactNode
 }
 
 export const MoreMenu = ({ children }: Props) => {
-  const [isOpen, setIsOpen] = useState(false)
   const theme = useTheme() as Theme
+  const [coords, setCoords] = useState({})
+  const [isOpen, setOpen] = useState(false)
+
+  const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+    const rect = (event.target as HTMLElement).getBoundingClientRect()
+    const { offsetWidth, offsetHeight } = event.currentTarget
+    const portalElWidth = 170
+    const right = portalElWidth - offsetWidth
+
+    setCoords({
+      left: rect.x - right,
+      top: rect.y + offsetHeight,
+      width: portalElWidth,
+    })
+
+    setOpen(true)
+  }
 
   return (
-    <ClickAway onClickAway={() => setIsOpen(false)}>
-      <StyledMenuWrapper onClick={() => setIsOpen(true)}>
-        <StyledButton>
+    <Foco
+      onClickOutside={() => setOpen(false)}
+      onFocusOutside={() => setOpen(false)}
+    >
+      <StyledMenuWrapper>
+        <StyledButton
+          onClick={(e) => {
+            handleOpen(e)
+          }}
+        >
           <CgMoreVerticalAlt size={theme.iconSize} />
         </StyledButton>
-        <StyleMenuList isOpen={isOpen}>
+      </StyledMenuWrapper>
+
+      <Portal isOpen={isOpen}>
+        <StyleMenuList {...coords} isOpen={isOpen}>
           {flattenChildren(children).map((child, index) => {
             return <li key={index}>{child}</li>
           })}
         </StyleMenuList>
-      </StyledMenuWrapper>
-    </ClickAway>
+      </Portal>
+    </Foco>
   )
 }
