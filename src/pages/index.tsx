@@ -13,6 +13,7 @@ const Home: NextPage = () => {
   const [newTodo, setNewTodo] = useState('')
   const [todos, setTodos] = useState<Todo[]>([])
   const [loading, setLoading] = useState(false)
+  const [addLoading, setAddLoading] = useState(false)
   const [validate, setValidate] = useState<{ title: string } | null>(null)
 
   useEffect(() => {
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
   }, [])
 
   const addTodo = async (title: string) => {
+    setAddLoading(true)
     const newTodo = { title, isComplete: false }
     const res = await api.addTodo(newTodo)
 
@@ -32,6 +34,7 @@ const Home: NextPage = () => {
       setTodos((prevTodos: Todo[]) => [res, ...prevTodos])
       setNewTodo('')
     }
+    setAddLoading(false)
   }
 
   const deleteTodo = async (id: string) => {
@@ -67,7 +70,7 @@ const Home: NextPage = () => {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
 
-    if (!isValid(newTodo)) {
+    if (!isValid(newTodo.trim())) {
       setValidate(() => ({ title: 'Invalid character length' }))
       return
     }
@@ -82,6 +85,7 @@ const Home: NextPage = () => {
       </header>
       <form onSubmit={handleSubmit}>
         <Input
+          isLoading={addLoading}
           placeholder="Add a new todo"
           value={newTodo}
           name="title"
