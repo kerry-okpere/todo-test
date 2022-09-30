@@ -51,7 +51,7 @@ export const TodoItem = ({
     <StyledTodoItem isComplete={complete}>
       <StyledRow>
         <Checkbox defaultChecked={isComplete} onChange={handleChange} />
-        <StyledTodoItemTitle>{title}</StyledTodoItemTitle>
+        <StyledTodoItemTitle isComplete={complete}>{title}</StyledTodoItemTitle>
       </StyledRow>
 
       <StyledRow>
