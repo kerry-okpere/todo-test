@@ -48,7 +48,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
 
-    if (!isValid(newTodo.title)) {
+    if (!isValid(newTodo.title.trim())) {
       setValidate(() => ({ title: 'Invalid character length' }))
       return
     }
@@ -88,7 +88,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
           <StyledDate>
             <p>Due date</p>
             <DatePicker
-              selected={new Date(newTodo.due)}
+              selected={newTodo.due ? new Date(newTodo.due) : undefined}
               onDayClick={(day: Date) =>
                 setTodo((prev: Todo) => ({ ...prev, due: day.getTime() }))
               }
@@ -98,7 +98,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
           <Textarea
             name="note"
             placeholder="Write a note..."
-            rows={6}
+            rows={10}
             value={newTodo.note}
             onChange={(e) =>
               setTodo((prev: Todo) => ({ ...prev, note: e.target.value }))
