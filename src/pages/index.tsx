@@ -27,11 +27,11 @@ const Home: NextPage = () => {
 
   const addTodo = async (title: string) => {
     setAddLoading(true)
-    const newTodo = { title, isComplete: false }
+    const newTodo = { title, isComplete: false, note: '', due: 0 }
     const res = await api.addTodo(newTodo)
 
     if (res) {
-      setTodos((prevTodos: Todo[]) => [res, ...prevTodos])
+      setTodos((prevTodos: Todo[]) => [...prevTodos, res])
       setNewTodo('')
     }
     setAddLoading(false)

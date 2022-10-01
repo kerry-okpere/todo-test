@@ -63,8 +63,8 @@ const updateTodo = async (id: string, payload: Partial<Todo>) => {
 const addTodo = async (payload: Partial<Todo>) => {
   let res: Todo | null = null
   try {
-    const todoRef = await addDoc(collection(db, 'todos'), payload)
-    res = await getTodoById(todoRef.id)
+    const { id } = await addDoc(collection(db, 'todos'), payload)
+    res = { id, ...payload } as Todo
   } catch (error) {
     console.log(error)
   }
