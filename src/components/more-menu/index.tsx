@@ -7,13 +7,14 @@ import { useTheme, Theme } from 'styled-components'
 import { Portal } from '@components/portal'
 import Foco from 'react-foco'
 interface Props {
+  isOpen: boolean
+  onClose: (isOpen: boolean) => void
   children: React.ReactNode
 }
 
-export const MoreMenu = ({ children }: Props) => {
+export const MoreMenu = ({ isOpen, onClose, children }: Props) => {
   const theme = useTheme() as Theme
   const [coords, setCoords] = useState({})
-  const [isOpen, setOpen] = useState(false)
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     const extraSpace = 4
@@ -28,13 +29,13 @@ export const MoreMenu = ({ children }: Props) => {
       width: portalElWidth,
     })
 
-    setOpen(true)
+    onClose(true)
   }
 
   return (
     <Foco
-      onClickOutside={() => setOpen(false)}
-      onFocusOutside={() => setOpen(false)}
+      onClickOutside={() => onClose(false)}
+      onFocusOutside={() => onClose(false)}
     >
       <StyledButtonWapper>
         <StyledButton

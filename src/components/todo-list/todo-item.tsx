@@ -34,11 +34,13 @@ export const TodoItem = ({
     onChecked(e)
   }
 
+  const [isOpen, setOpen] = useState(false)
   const [delLoading, setDelLoading] = useState(false)
   const handleDelete = async () => {
     setDelLoading(true)
     await onDelete(id)
     setDelLoading(false)
+    setOpen(false)
   }
 
   const [editLoading, setLoading] = useState(false)
@@ -56,7 +58,7 @@ export const TodoItem = ({
 
       <StyledRow>
         {due ? <Tag text={`${day} ${month}`} /> : null}
-        <MoreMenu>
+        <MoreMenu isOpen={isOpen} onClose={(open) => setOpen(open)}>
           <MoreMenuItem onClick={() => handleEdit()}>
             {editLoading ? (
               <Loader size={theme.iconSize} />
