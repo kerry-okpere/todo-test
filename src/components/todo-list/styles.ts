@@ -31,7 +31,11 @@ export const StyledTodoItem = styled.div<Partial<Todo>>`
   background-color: ${(props) => props.theme.palette.gray.g1};
   padding: 0.5rem 0.75rem;
   border-radius: ${(props) => props.theme.borderRadius.lg};
-  //hover effect
+  transition: all 0.3s;
+
+  :hover {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
 `
 export const StyledTodoList = styled.ul`
   padding: 1.5rem 0;
@@ -40,4 +44,8 @@ export const StyledTodoList = styled.ul`
   gap: 0.75rem;
   overflow-y: scroll;
   overflow-x: hidden;
+
+  @media ${devices.mobile} {
+    padding: 3rem;
+  }
 `
