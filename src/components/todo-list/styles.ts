@@ -32,9 +32,11 @@ export const StyledTodoItem = styled.div<Partial<Todo>>`
   padding: 0.5rem 0.75rem;
   border-radius: ${(props) => props.theme.borderRadius.lg};
   transition: all 0.3s;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
 
   :hover {
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 `
 export const StyledTodoList = styled.ul`
