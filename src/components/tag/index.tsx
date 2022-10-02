@@ -1,8 +1,8 @@
 import { StyledTag } from './styles'
-interface Props extends React.HTMLProps<HTMLSpanElement> {
+export interface Props extends React.ComponentPropsWithoutRef<'span'> {
   text: string
 }
 
-export const Tag = ({ text }: Props) => {
-  return <StyledTag>{text}</StyledTag>
+export const Tag = ({ text, ...rest }: Props) => {
+  return <StyledTag {...rest}>{text}</StyledTag>
 }
