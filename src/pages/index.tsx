@@ -85,6 +85,7 @@ const Home: NextPage = () => {
       </header>
       <form onSubmit={handleSubmit}>
         <Input
+          data-testid="new-todo-input"
           isLoading={addLoading}
           placeholder="Add a new todo"
           value={newTodo}

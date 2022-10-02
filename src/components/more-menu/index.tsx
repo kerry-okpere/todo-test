@@ -39,6 +39,7 @@ export const MoreMenu = ({ isOpen, onClose, children }: Props) => {
     >
       <StyledButtonWapper>
         <StyledButton
+          data-testid="menu-button"
           onClick={(e) => {
             handleOpen(e)
           }}
@@ -47,7 +48,7 @@ export const MoreMenu = ({ isOpen, onClose, children }: Props) => {
       </StyledButtonWapper>
 
       <Portal isOpen={isOpen}>
-        <StyleMenuList {...coords} isOpen={isOpen}>
+        <StyleMenuList data-testid="menu-list" {...coords} isOpen={isOpen}>
           {flattenChildren(children).map((child, index) => {
             return <li key={index}>{child}</li>
           })}

@@ -37,7 +37,4 @@ export const StyledDayPickerContent = styled.div<{ isOpen: boolean }>`
 export const StyledDayPickerWrapper = styled.div`
   position: relative;
   width: max-content;
-
-  ${StyledDayPickerContent} {
-  }
 `

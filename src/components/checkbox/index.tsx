@@ -16,10 +16,9 @@ export const Checkbox = ({ name, defaultChecked, onChange }: Props) => {
   }
 
   return (
-    <StyledWrapper
-      onClick={(e: React.MouseEvent<HTMLLabelElement>) => e.stopPropagation()}
-    >
+    <StyledWrapper>
       <HiddenCheckbox
+        data-testid="checkbox"
         name={name}
         type="checkbox"
         checked={checked}

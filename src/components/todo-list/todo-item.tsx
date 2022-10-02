@@ -53,11 +53,16 @@ export const TodoItem = ({
     <StyledTodoItem isComplete={complete}>
       <StyledRow>
         <Checkbox defaultChecked={isComplete} onChange={handleChange} />
-        <StyledTodoItemTitle isComplete={complete}>{title}</StyledTodoItemTitle>
+        <StyledTodoItemTitle
+          data-testid="todo-item-title"
+          isComplete={complete}
+        >
+          {title}
+        </StyledTodoItemTitle>
       </StyledRow>
 
       <StyledRow>
-        {due ? <Tag text={`${day} ${month}`} /> : null}
+        {due ? <Tag data-testid="tag" text={`${day} ${month}`} /> : null}
         <MoreMenu isOpen={isOpen} onClose={(open) => setOpen(open)}>
           <MoreMenuItem onClick={() => handleEdit()}>
             {editLoading ? (

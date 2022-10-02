@@ -17,7 +17,7 @@ export const TodoList = ({ todos, updateTodo, onDelete }: Props) => {
   }
 
   return (
-    <StyledTodoList>
+    <StyledTodoList data-testid="todo-list">
       {todos.map((todo, index) => {
         return (
           <li key={index}>
