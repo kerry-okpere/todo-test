@@ -69,6 +69,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
           <header>
             <Input
               name="title"
+              data-testid="edit-todo-input"
               withCheckbox
               value={newTodo.title}
               defaultChecked={todo.isComplete}
@@ -97,6 +98,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
 
           <Textarea
             name="note"
+            data-testid="textarea"
             placeholder="Write a note..."
             rows={10}
             value={newTodo.note}
@@ -108,6 +110,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
 
         <StyledActionWrapper>
           <StyledDeleteButton
+            data-testid="delete-button"
             type="button"
             appearance="error"
             onClick={deleteTodo}
@@ -121,6 +124,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
             <span>Delete</span>
           </StyledDeleteButton>
           <StyledSaveButton
+            data-testid="save-button"
             type="submit"
             disabled={saveLoading || deleteLoading}
           >
@@ -135,8 +139,7 @@ const TodoPage: NextPage<PageProp> = ({ todo }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { id } = ctx.query
-  const res = await api.getTodoById(id as string)
-  const data = { ...res, id }
+  const data = await api.getTodoById(id as string)
 
   if (!data) {
     return {
@@ -146,7 +149,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      todo: data,
+      todo: { ...data, id },
     },
   }
 }
