@@ -8,7 +8,7 @@ export const Greeting = () => {
 
   return (
     <StyledHeader>
-      <StyleHeading>
+      <StyleHeading data-testid="greeting-text">
         {emoji} Good {timeOfDay}!
       </StyleHeading>
       <StyleSubHeading>
