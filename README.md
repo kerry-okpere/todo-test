@@ -13,8 +13,6 @@ yarn install
 
 ### Test app
 
-This app supports e2e test with [Cypress](https://www.cypress.io/) and component testing with [Jest](https://jestjs.io/)
-
 This app uses firebase. Connect your firebase app using the `.env.example` as reference for required keys.
 
 To Run the development server:
@@ -25,7 +23,13 @@ Rename `.env.example` to `.env.local`
 yarn dev
 ```
 
-### Run e2e tests
+### Run tests
+
+This app supports e2e test with [Cypress](https://www.cypress.io/) and component testing with [Jest](https://jestjs.io/)
+
+#### Run e2e tests
+
+To Run the cypress:
 
 Rename `.env.example` to `.env.local`
 
