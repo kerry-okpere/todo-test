@@ -1,4 +1,4 @@
-This is [Todo app](https://todo-gv5yzm0ob-kerry-okpere.vercel.app/) built with [Next.js](https://nextjs.org/)
+This is [Todo app](https://kerry-todo-app.vercel.app/) built with [Next.js](https://nextjs.org/)
 
 ## Getting Started
 
