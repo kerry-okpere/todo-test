@@ -48,6 +48,6 @@ export const StyledTodoList = styled.ul`
   overflow-x: hidden;
 
   @media ${devices.mobile} {
-    padding: 3rem;
+    padding: 1.5rem 3rem;
   }
 `
