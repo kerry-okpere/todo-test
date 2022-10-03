@@ -5,3 +5,7 @@ export type Todo = {
   note: string
   isComplete: boolean
 }
+
+export enum Collections {
+  Todo = 'todo',
+}
