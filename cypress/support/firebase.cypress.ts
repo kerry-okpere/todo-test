@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore/lite'
 import { collection, getDocs, doc, deleteDoc } from 'firebase/firestore/lite'
+import { Collections } from 'global'
 
 const firebaseConfig = {
   apiKey: Cypress.env('FIREBASE_API_KEY'),
@@ -17,7 +18,7 @@ export const db = getFirestore(app)
 export const deleteAll = async () => {
   let res = false
   try {
-    const todos = await getDocs(collection(db, 'todos'))
+    const todos = await getDocs(collection(db, Collections.Todo))
     const requests = todos.docs.map((item) =>
       deleteDoc(doc(db, 'todos', item.id))
     )

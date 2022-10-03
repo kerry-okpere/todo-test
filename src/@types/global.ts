@@ -7,5 +7,5 @@ export type Todo = {
 }
 
 export enum Collections {
-  Todo = 'todo',
+  Todo = 'todos',
 }
