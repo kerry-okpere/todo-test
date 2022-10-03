@@ -7,7 +7,12 @@ import type { Todo } from 'global'
 import api from '@services/todo'
 import { Loader } from '@components/loader'
 import { isValid } from '@lib/validate'
-import { StyledLoaderWrapper, StyledPageWrapper } from '@styles/todo/list-page'
+import {
+  StyledLoaderWrapper,
+  StyledPageWrapper,
+  StyledPageTabWrapper,
+} from '@styles/todo/list-page'
+import { Tab } from '@components/tab'
 
 const Home: NextPage = () => {
   const [newTodo, setNewTodo] = useState('')
@@ -15,6 +20,7 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false)
   const [addLoading, setAddLoading] = useState(false)
   const [validate, setValidate] = useState<{ title: string } | null>(null)
+  const [filter, setFilter] = useState('all')
 
   useEffect(() => {
     ;(async () => {
@@ -24,6 +30,12 @@ const Home: NextPage = () => {
       setLoading(false)
     })()
   }, [])
+
+  const computedTodos = () => {
+    if (filter === 'complete') return todos.filter((item) => item.isComplete)
+    if (filter === 'active') return todos.filter((item) => !item.isComplete)
+    return todos
+  }
 
   const addTodo = async (title: string) => {
     setAddLoading(true)
@@ -99,8 +111,19 @@ const Home: NextPage = () => {
           <Loader size={40} />
         </StyledLoaderWrapper>
       ) : (
-        <TodoList todos={todos} updateTodo={updateTodo} onDelete={deleteTodo} />
+        <TodoList
+          todos={computedTodos()}
+          updateTodo={updateTodo}
+          onDelete={deleteTodo}
+        />
       )}
+      <StyledPageTabWrapper>
+        <Tab
+          active={filter}
+          tabs={['all', 'active', 'complete']}
+          onChange={(tab) => setFilter(tab)}
+        />
+      </StyledPageTabWrapper>
     </StyledPageWrapper>
   )
 }
